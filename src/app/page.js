@@ -1,7 +1,5 @@
 "use client";
 
-import { GridContainer } from "@/components/GridContainer";
-import { Card } from "../components/Card";
 import { useState } from "react";
 import { Navbar } from "@/components/Navbar";
 import { AllBlogs } from "@/components/AllBlogs";
@@ -19,6 +17,8 @@ export default function Home() {
         <Navbar toggleTheme={handleClick} isDark={isDark} />
 
         <AllBlogs />
+
+        <div id="adad" className="w-full h-[500px] bg-red-500"></div>
       </div>
     </div>
   );

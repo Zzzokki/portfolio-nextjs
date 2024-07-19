@@ -5,6 +5,7 @@ import { CiLight } from "react-icons/ci";
 import { CiDark } from "react-icons/ci";
 import { Drawer } from "./Drawer";
 import { useState } from "react";
+import Link from "next/link";
 
 export const Navbar = ({ toggleTheme, isDark }) => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -18,6 +19,10 @@ export const Navbar = ({ toggleTheme, isDark }) => {
       <div className="w-full shadow-md dark:shadow-none dark:border-b border-slate-700">
         <div className="w-full m-auto lg:w-[1100px] h-[64px] flex justify-between items-center ">
           <h1 className="text-xl text-[#000] dark:text-[#fff]">Navbar</h1>
+
+          <Link href="#adad">
+            <button>Scroll</button>
+          </Link>
 
           <div className="flex gap-6">
             {isDark ? (

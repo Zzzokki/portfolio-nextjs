@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const categories = [
@@ -15,7 +16,7 @@ export const AllBlogs = () => {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
 
-  const [category, setCategory] = useState("Python");
+  const [category, setCategory] = useState("All");
   const [perPage, setPerPage] = useState(9);
 
   const handleCategory = (category) => {
@@ -72,13 +73,14 @@ export const AllBlogs = () => {
 
       <div className="w-full grid grid-cols-3 gap-[24px]">
         {blogs.map((blog) => (
-          <BlogCard
-            key={blog.title}
-            image={blog.cover_image}
-            title={blog.title}
-            date={blog.published_at}
-            tags={blog.tag_list}
-          />
+          <Link key={blog.id} href={`/blogs/${blog.id}`}>
+            <BlogCard
+              image={blog.cover_image}
+              title={blog.title}
+              date={blog.published_at}
+              tags={blog.tag_list}
+            />
+          </Link>
         ))}
       </div>
 
@@ -92,7 +94,7 @@ export const AllBlogs = () => {
   );
 };
 
-const BlogCard = ({ image, title, date, tags }) => {
+export const BlogCard = ({ image, title, date, tags }) => {
   return (
     <div className="border p-4 flex flex-col gap-4 w-full rounded-md bg-white">
       <img src={image} alt="image" className="aspect-[2/1] w-full rounded-md" />
@@ -111,8 +113,7 @@ const BlogCard = ({ image, title, date, tags }) => {
     </div>
   );
 };
-
-const BlogTag = ({ tag }) => {
+export const BlogTag = ({ tag }) => {
   return (
     <div className="bg-[#4b6bfb0d] py-1 px-[10px] rounded-md">
       <p className="text-[#4B6BFB] font-medium text-md capitalize">{tag}</p>
